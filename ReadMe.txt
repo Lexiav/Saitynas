@@ -6,7 +6,8 @@ Check If Entities are correct
 
 php bin/console make:migration
 
-php bin/console doctrine:schema:update --dump-sql > sql.sql
+php bin/console doctrine:schema:update --dump-sql > sql.sq
+
 
 updating js
 yarn run encore dev

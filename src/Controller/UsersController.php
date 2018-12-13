@@ -40,12 +40,11 @@ class UsersController extends AppController
         return $this->respondCreated($user);
     }
     /**
-     * @Route("/api/users{id}", methods={"PUT"})
+     * @Route("/api/users/{id}", methods={"PUT"})
      */
     public function update($id)
     {
         $request = $this->requestAll();
-        if (!$this->canEdit($id, 'Users')) $this->respondNoPermission();
         /** @var Users $user */
         $user = $this->getDoctrine()->getRepository(Users::class)->find($id);
         if (empty($user)) return $this->respondWithErrors('03', 'User not found');
@@ -90,11 +89,10 @@ class UsersController extends AppController
 
     }
     /**
-     * @Route("/api/users{id}", methods={"DELETE"})
+     * @Route("/api/users/{id}", methods={"DELETE"})
      */
     public function delete($id)
     {
-        if (!$this->canDelete($id, 'Users')) $this->respondNoPermission();
 
         /** @var Users $user */
         $user = $this->getDoctrine()->getRepository(Users::class)->find($id);
